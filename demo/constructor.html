@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<div id = "app"></div>
+	<script>
+		var data = { a: 1 }
+		var vm = new Vue({
+			el:'#app',
+			data:data
+		})
+		vm.a === data.a
+		// 设置属性也会影响到原始数据
+		vm.a =2
+		console.log(data.a);
+		
+		//反之亦然
+		data.a = 3
+		console.log(vm.a);
+
+		//如果在实例创建之后添加新的属性到实例上，它不会触发视图更新。
+
+		console.log(vm.$data === data); //true
+
+		console.log(vm.$el === document.getElementById('app'));//true
+
+		//$watch是一个实例方法
+		vm.$watch('a',function(newVal,oldVal){
+			alert(newVal);
+			//这个回调将在vm.a改变后调用
+		})
+		vm.a = 4;
+	</script>
+</body>
+</html>
