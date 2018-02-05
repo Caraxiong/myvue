@@ -50,5 +50,6 @@ module.exports = function () {
 
     console.log()
     process.exit(1)
+    console.log('test can or not print after exit')
   }
 }
